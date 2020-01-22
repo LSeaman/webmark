@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<base target="_blank" />
+		<title></title>
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/vue.css" />
+		<script src="js/Vue/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue-router/vue-router_3.0.2.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">	
+			<div id="header">
+				<div class="type-aera">
+					<div id="nav-box">
+						<div id="login">
+						</div>
+						<input type="text" id="search" placeholder="请搜索关键词或者地址" v-model="key" />
+						<input type="submit" id="" name="" @click="search()" value="搜索" />
+
+						<div id="nav">
+
+							<div class="nav-span" :id="item" v-for="(item, index) in category" v-text="">
+								<dl>
+									<dt v-text="item.name"></dt>
+									<dd></dd>
+									<dd></dd>
+									<dd></dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="type-aera">
+				<div id="main">
+					<show-box :flink="link" :show="showListFlag"></show-box>
+					<div id="particulars" v-if="!showListFlag">
+						<div class="mark-box" v-if="hideFlag" v-for="item in result">
+							<div class="mark-title">
+								<a :href="'http://' + purl" v-text="item.title"></a>
+							</div>
+							<div class="mark-link">
+								<a :href="'http://' + purl" v-text="item.url"></a>
+								<span @click="editMark()">改</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="type-aera">
+					<div id="add" @click="addButton()">
+						加
+					</div>
+					<div id="add-plus" :style="{transform : addFlag ? 'translateX(-100%)' : ''}">
+						<div id="form-local-add">
+							网络
+						</div>
+						<div id="form-internet-add">
+							本地
+						</div>
+					</div>
+					<div id="show" @click="showButton()">
+						示
+					</div>
+					<div id="show-plus" :style="{transform : showFlag ? 'translateX(-200%)' : ''}">
+						<div id="form-local-show" @click="showList()">
+							全部
+						</div>
+						<div id="form-internet-show">
+							分类
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+			
+
+		<script src="js/jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
+	</body>
+</html>
